@@ -1,0 +1,22 @@
+server:
+  port: 8080
+#虚拟ip
+tttare:
+  server-ip: 192.168.0.105
+# Eureka配置
+eureka:
+  client:
+    register-with-eureka: false # 不向 Eureka注册自己
+    service-url: # 从三个注册中心中随机取一个去访问
+      defaultZone: http://${tttare.server-ip}:7001/eureka/
+
+
+# 开启降级feign.hystrix
+feign:
+  hystrix:
+    enabled: false
+  client:
+    config:
+      default:
+        connectTimeout: 10000  #单位毫秒
+        readTimeout: 10000

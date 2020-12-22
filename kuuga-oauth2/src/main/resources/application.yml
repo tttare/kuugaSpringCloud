@@ -1,0 +1,52 @@
+server:
+  port: 8090
+#虚拟ip
+tttare:
+  server-ip: 192.168.0.105
+# mybatis-plus的配置
+mybatis-plus:
+  type-aliases-package: com.kuuga.api.model.biz
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    jdbc-type-for-null: null
+  global-config:
+    banner: false
+# spring的配置
+spring:
+  application:
+    name: kuuga-oauth2
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource #数据库
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://${tttare.server-ip}:3306/management?characterEncoding=utf-8&useUnicode=true
+    username: tttare
+    password: 111464
+# Eureka的配置
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${tttare.server-ip}:7001/eureka/
+  instance:
+    instance-id: ${spring.application.name} #修改Eureka上的默认描述信息
+  #redis 配置
+  redis:
+    host: ${tttare.server-ip}
+    #password: 1111
+    port: 6379
+    database: 0
+    timeout: 60s  # 数据库连接超时时间，2.0 中该参数的类型为Duration，这里在配置的时候需要指明单位
+    # 连接池配置，2.0中直接使用jedis或者lettuce配置连接池
+    jedis:
+      pool:
+        # 最大空闲连接数
+        max-idle: 500
+        # 最小空闲连接数
+        min-idle: 50
+        # 等待可用连接的最大时间，负数为不限制
+        max-wait:  -1s
+        # 最大活跃连接数，负数为不限制
+        max-active: -1
+#info配置
+info:
+  app.name: kuuga #项目的名称
+  company.name: com.tttare #公司的名称

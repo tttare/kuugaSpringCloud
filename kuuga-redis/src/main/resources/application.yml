@@ -1,0 +1,32 @@
+
+server:
+  port: 8010
+  #虚拟ip
+tttare:
+  server-ip: 192.168.137.149
+spring:
+  application:
+    name: kuuga-redis
+  http:
+      encoding:
+        charset: UTF-8
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: non_null
+  redis:
+    database: 0
+    port: 6379
+    host: ${tttare.server-ip}
+    password:
+#redisson配置
+redisson:
+  address: redis://${tttare.server-ip}:6379
+  password:
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://${tttare.server-ip}:7001/eureka/

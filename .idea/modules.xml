@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/kuuga-api/kuuga-api.iml" filepath="$PROJECT_DIR$/kuuga-api/kuuga-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kuuga-blog-portal/kuuga-blog-portal.iml" filepath="$PROJECT_DIR$/kuuga-blog-portal/kuuga-blog-portal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kuuga-oauth2/kuuga-oauth2.iml" filepath="$PROJECT_DIR$/kuuga-oauth2/kuuga-oauth2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kuuga-rabbitMQ/kuuga-rabbitMQ.iml" filepath="$PROJECT_DIR$/kuuga-rabbitMQ/kuuga-rabbitMQ.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kuuga-redis/kuuga-redis.iml" filepath="$PROJECT_DIR$/kuuga-redis/kuuga-redis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kuuga-resource-service/kuuga-resource-service.iml" filepath="$PROJECT_DIR$/kuuga-resource-service/kuuga-resource-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kuuga-system-service/kuuga-system-service.iml" filepath="$PROJECT_DIR$/kuuga-system-service/kuuga-system-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kuuga-zuul/kuuga-zuul.iml" filepath="$PROJECT_DIR$/kuuga-zuul/kuuga-zuul.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springcloud.iml" filepath="$PROJECT_DIR$/springcloud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springcloud-eureka-7001/springcloud-eureka-7001.iml" filepath="$PROJECT_DIR$/springcloud-eureka-7001/springcloud-eureka-7001.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springcloud-zuul-9527/springcloud-zuul-9527.iml" filepath="$PROJECT_DIR$/springcloud-zuul-9527/springcloud-zuul-9527.iml" />
+    </modules>
+  </component>
+</project>
