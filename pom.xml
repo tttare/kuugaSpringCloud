@@ -12,12 +12,14 @@
         <module>kuuga-resource-service</module>
         <module>kuuga-api</module>
         <module>kuuga-blog-portal</module>
-        <module>kuuga-system-service</module>
         <module>kuuga-oauth2</module>
         <module>kuuga-zuul</module>
         <module>kuuga-redis</module>
         <module>kuuga-rabbitMQ</module>
-        <module>springcloud-zuul-9527</module>
+        <module>kuuga-config</module>
+        <module>kuuga-user-center</module>
+        <module>kuuga-pay-service</module>
+        <module>grayLoadBalance</module>
     </modules>
 
     <!--打包方式 pom-->

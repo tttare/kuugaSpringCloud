@@ -80,7 +80,7 @@
         </dependency>
         <!--api层-->
         <dependency>
-            <groupId>nuc.ss</groupId>
+            <groupId>com.kuuga</groupId>
             <artifactId>kuuga-api</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>

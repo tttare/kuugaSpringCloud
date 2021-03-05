@@ -45,8 +45,8 @@
         </dependency>
 
         <dependency>
-            <groupId>nuc.ss</groupId>
-            <artifactId>springcloud-api</artifactId>
+            <groupId>com.kuuga</groupId>
+            <artifactId>kuuga-api</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 

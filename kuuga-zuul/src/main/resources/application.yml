@@ -2,7 +2,7 @@ server:
   port: 8091
 #虚拟ip
 tttare:
-  server-ip: 192.168.0.105
+  server-ip: 172.17.6.85
 
 spring:
   application:
@@ -12,20 +12,28 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://${tttare.server-ip}:7001/eureka/
+      defaultZone: http://${tttare.server-ip}:1001/eureka/
   instance:
     instance-id: ${spring.application.name} #修改Eureka上的默认描述信息
 
-#--------------------Zuul-----------------------
+#--------------------Zuul 转发配置-----------------------
 zuul:
   routes:
-    member:
+    resource:
       path: /resource/**
       serviceId: kuuga-resource-service
       sensitiveHeaders: "*"
     auth:
       path: /auth/**
       serviceId: kuuga-oauth2
+      sensitiveHeaders: "*"
+    system:
+      path: /system/**
+      serviceId: kuuga-system-service
+      sensitiveHeaders: "*"
+    user-center:
+      path: /user/**
+      serviceId: kuuga-user-center
       sensitiveHeaders: "*"
   retryable: false
   ignored-services: "*"
@@ -38,15 +46,15 @@ zuul:
   add-proxy-headers: true
 
 #---------------------OAuth2---------------------
-security:
-  oauth2:
-    client:
-      access-token-uri: http://${tttare.server-ip}:${server.port}/auth/oauth/token
-      user-authorization-uri: http://${tttare.server-ip}:${server.port}/auth/oauth/authorize
-      client-id: web
-    resource:
-      user-info-uri:  http://${tttare.server-ip}:${server.port}/auth/kuuga/member
-      prefer-token-info: false
+#security:
+#  oauth2:
+#    client:
+#      access-token-uri: http://${tttare.server-ip}:${server.port}/auth/oauth/token
+#      user-authorization-uri: http://${tttare.server-ip}:${server.port}/auth/oauth/authorize
+#      client-id: web
+#    resource:
+#      user-info-uri:  http://${tttare.server-ip}:${server.port}/auth/kuuga/member
+#      prefer-token-info: false
 
 #----------------------超时配置-------------------
 ribbon:
@@ -65,3 +73,13 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 60000
+
+#------------------灰度配置----------------------
+# 正式环境微服务版本
+gray:
+  # 微服务稳定版本配置
+  stableConfig:
+    kuuga-user-center: v1.0
+    kuuga-pay-service: v1.0
+  # 项目灰度服务配置
+  grayProjectConfig: [{projectId: 101,linkServersVersion: {kuuga-user-center: v1.1,kuuga-pay-service: v1.0}},{projectId: 102,linkServersVersion: {kuuga-user-center: v1.1,kuuga-pay-service: v1.1}}]

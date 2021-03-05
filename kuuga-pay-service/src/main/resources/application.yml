@@ -1,0 +1,50 @@
+server:
+  port: 8093
+#虚拟ip
+tttare:
+  server-ip: 172.17.6.85
+
+spring:
+  application:
+    name: kuuga-pay-service
+
+#--------------------eureka---------------------
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${tttare.server-ip}:1001/eureka/
+  instance:
+    instance-id: ${spring.application.name}:${server.port} #修改Eureka上的默认描述信息
+    metadata-map:
+      version: v1.0
+
+#---------------------OAuth2---------------------
+#security:
+#  oauth2:
+#    client:
+#      access-token-uri: http://${tttare.server-ip}:${server.port}/auth/oauth/token
+#      user-authorization-uri: http://${tttare.server-ip}:${server.port}/auth/oauth/authorize
+#      client-id: web
+#    resource:
+#      user-info-uri:  http://${tttare.server-ip}:${server.port}/auth/kuuga/member
+#      prefer-token-info: false
+
+#----------------------超时配置-------------------
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+  MaxAutoRetries: 2
+  MaxAutoRetriesNextServer: 2
+  eureka:
+    enabled: true
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+
+

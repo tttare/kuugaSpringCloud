@@ -1,4 +1,5 @@
-package com.kuuga.zuul.config;
+package com.kuuga.user.config;
+
 
 import com.kuuga.gray.rule.GrayBalanceRule;
 import com.netflix.loadbalancer.IRule;
@@ -6,9 +7,6 @@ import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -17,19 +15,8 @@ import org.springframework.web.client.RestTemplate;
  * @version Araf v1.0
  */
 @Configuration
-@EnableWebSecurity
 @Order(99)//必加
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
-    /**
-     * 禁止csrf
-     * @param http
-     * @throws Exception
-     */
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable();
-    }
+public class SecurityConfig {
 
     @Bean
     @LoadBalanced
@@ -43,6 +30,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //使用 灰度发布rule
         return new GrayBalanceRule();
     }
-
 
 }

@@ -28,6 +28,8 @@ eureka:
       defaultZone: http://${tttare.server-ip}:7001/eureka/
   instance:
     instance-id: kuuga-resource-service #修改Eureka上的默认描述信息
+    metadata-map:
+      version: v1.0 #在eureka表明当前服务的版本信息
 #redis 配置
   redis:
     host: ${tttare.server-ip}
