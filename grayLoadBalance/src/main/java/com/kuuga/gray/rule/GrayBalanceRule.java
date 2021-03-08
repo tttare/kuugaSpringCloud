@@ -42,9 +42,12 @@ public class GrayBalanceRule extends ZoneAvoidanceRule {
         //微服务注册的服务器集合
         List<Server> serverList = this.getLoadBalancer().getAllServers();
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        String stableConfigStr = (String)request.getAttribute(GrayContants.STABLE_CONFIG);
+        String stableConfigStr = request.getHeader(GrayContants.STABLE_CONFIG.toLowerCase());
         if(StringUtils.isEmpty(stableConfigStr)){
-            throw new IllegalArgumentException("参数非法，未配置灰度发布服务基础配置参数"+GrayContants.STABLE_CONFIG+"！");
+            stableConfigStr = (String)request.getAttribute(GrayContants.STABLE_CONFIG);
+            if(StringUtils.isEmpty(stableConfigStr)){
+                throw new IllegalArgumentException("参数非法，未配置灰度发布服务基础配置参数"+GrayContants.STABLE_CONFIG+"！");
+            }
         }
         Gson gson = new Gson();
         Map<String,String> stableConfigMap = gson.fromJson(stableConfigStr, Map.class);
@@ -52,7 +55,10 @@ public class GrayBalanceRule extends ZoneAvoidanceRule {
         if(StringUtils.isEmpty(stableVersion)){
             throw new IllegalArgumentException("参数非法，服务"+appName+"未配置稳定版本！");
         }
-        String grayProjectConfigStr = (String)request.getAttribute(GrayContants.GRAY_PROJECT_CONFIG);
+        String grayProjectConfigStr = request.getHeader(GrayContants.GRAY_PROJECT_CONFIG.toLowerCase());
+        if(StringUtils.isEmpty(grayProjectConfigStr)){
+            grayProjectConfigStr = (String)request.getAttribute(GrayContants.GRAY_PROJECT_CONFIG);
+        }
         if(StringUtils.isEmpty(grayProjectConfigStr)){
             targetVersion = stableVersion;
         }else{
