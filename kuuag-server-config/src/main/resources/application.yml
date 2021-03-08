@@ -1,0 +1,25 @@
+server:
+  port: 8099
+#虚拟ip
+tttare:
+  server-ip: 172.17.6.85
+
+spring:
+  application:
+    name: kuuga-server-config
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: G:/config
+
+#--------------------eureka---------------------
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${tttare.server-ip}:1001/eureka/
+  instance:
+    instance-id: ${spring.application.name}:${server.port} #修改Eureka上的默认描述信息
+
