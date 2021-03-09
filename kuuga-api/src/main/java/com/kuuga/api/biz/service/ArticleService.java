@@ -5,6 +5,7 @@ import com.kuuga.api.biz.model.Article;
 import com.kuuga.api.common.QueryPage;
 import com.kuuga.api.common.ResponseParam;
 import com.kuuga.api.config.FeignConfig;
+import com.kuuga.gray.feign.FeignConfiguration;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @since JDK 1.8
  */
 @Service
-@FeignClient(value = "kuuga-resource-service", fallback = ArticleServiceFallback.class)
+@FeignClient(value = "kuuga-resource-service", fallback = ArticleServiceFallback.class,configuration = FeignConfiguration.class)
 public interface ArticleService {
 
     @PostMapping(value = "/article/add")

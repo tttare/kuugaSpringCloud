@@ -14,7 +14,7 @@ eureka:
     service-url:
       defaultZone: http://${tttare.server-ip}:1001/eureka/
   instance:
-    instance-id: ${spring.application.name} #修改Eureka上的默认描述信息
+    instance-id: ${spring.application.name}:${server.port} #修改Eureka上的默认描述信息
 
 #--------------------Zuul 转发配置-----------------------
 zuul:
@@ -75,11 +75,12 @@ hystrix:
             timeoutInMilliseconds: 60000
 
 #------------------灰度配置----------------------
-# 正式环境微服务版本
-gray:
-  # 微服务稳定版本配置
-  stableConfig:
-    kuuga-user-center: v1.0
-    kuuga-pay-service: v1.0
-  # 项目灰度服务配置
-  grayProjectConfig: [{projectId: 101,linkServersVersion: {kuuga-user-center: v1.1,kuuga-pay-service: v1.0}},{projectId: 102,linkServersVersion: {kuuga-user-center: v1.1,kuuga-pay-service: v1.1}}]
+#正式环境微服务版本
+#gray:
+#  #微服务稳定版本配置
+#  stableConfig:
+#    kuuga-USER-center: v1.0
+#    kuuga-pay-service: v1.0
+#    kuuga-point-service: v1.0
+#  #项目灰度服务配置
+#  grayProjectConfig: [{projectId: 101,linkServersVersion: {kuuga-user-CENTER: v1.0,kuuga-pay-service: v1.0}},{projectId: 102,linkServersVersion: {kuuga-user-center: v1.1,kuuga-pay-service: v1.1}}]

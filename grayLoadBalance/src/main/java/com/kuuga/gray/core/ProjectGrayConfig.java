@@ -1,8 +1,6 @@
 package com.kuuga.gray.core;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ProjectGrayConfig {
 
@@ -21,7 +19,15 @@ public class ProjectGrayConfig {
         return linkServersVersion;
     }
 
-    public void setLinkServersVersion(Map<String, String> linkServersVersion) {
-        this.linkServersVersion = linkServersVersion;
+    public void setLinkServersVersion(Map<String, String> linkServersVersionMap) {
+        if(linkServersVersionMap==null || linkServersVersionMap.isEmpty()){
+            return;
+        }
+        Set<String> keys = linkServersVersionMap.keySet();
+        Map<String,String> lowKeyMap = new HashMap<>();
+        for(String key:keys){
+            lowKeyMap.put(key.toLowerCase(),linkServersVersionMap.get(key));
+        }
+        this.linkServersVersion = lowKeyMap;
     }
 }

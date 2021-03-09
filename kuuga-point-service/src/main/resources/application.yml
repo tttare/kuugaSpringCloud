@@ -1,39 +1,13 @@
 server:
-  port: 9095
+  port: 9097
 #虚拟ip
 tttare:
   server-ip: 172.17.6.85
-  version: v1.1
+  version: v1.0
 
 spring:
   application:
-    name: kuuga-pay-service
-  #通用数据源配置 pg数据库
-#  datasource:
-#    driver-class-name: org.postgresql.Driver
-#    url: jdbc:postgresql://172.17.6.84:5432/test?searchpath=project101
-#    username: postgres
-#    password: pgcet123Cet
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://172.16.6.134:5433/test?searchpath=project101
-    username: postgres
-    password: LPwarrior123456
-#--------------------mybatis plus --------------
-mybatis-plus:
-  configuration:
-    map-underscore-to-camel-case: true
-    auto-mapping-behavior: full
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-  mapper-locations: classpath*:mapper/**/*Mapper.xml
-  global-config:
-    # 逻辑删除配置
-    db-config:
-      # 删除前
-      logic-not-delete-value: 1
-      # 删除后
-      logic-delete-value: 0
-
+    name: kuuga-point-service
 #--------------------eureka---------------------
 eureka:
   client:

@@ -1,0 +1,7 @@
+gray:
+  # 微服务稳定版本配置
+  stableConfig:
+    kuuga-user-center: v1.0
+    kuuga-pay-service: v1.0
+  # 项目灰度服务配置
+  grayProjectConfig: [{projectId: 101,linkServersVersion: {kuuga-user-center: v1.0,kuuga-pay-service: v1.0}},{projectId: 102,linkServersVersion: {kuuga-user-center: v1.1,kuuga-pay-service: v1.1}}]

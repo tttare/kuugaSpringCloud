@@ -8,10 +8,11 @@ import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
+import javax.servlet.http.HttpServletRequestWrapper;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,8 +24,9 @@ import java.util.Map;
 @Component
 public class GrayUserFilter extends ZuulFilter {
 
-    @Autowired
+    //@Autowired
     private GrayConfig grayConfig=null;
+
 
     /**
      * 过滤器的类型。可选值有：
@@ -78,6 +80,7 @@ public class GrayUserFilter extends ZuulFilter {
                 Map<String, String> projectVersions = grayConfig.getLinkServersVersion();
                 if(projectVersions!=null&&!projectVersions.isEmpty()){
                     request.setAttribute(GrayContants.GRAY_PROJECT_CONFIG,gson.toJson(projectVersions).toString());
+                    rc.addZuulRequestHeader(GrayContants.GRAY_PROJECT_CONFIG,gson.toJson(projectVersions).toString());
                 }
             }
         }
@@ -87,6 +90,7 @@ public class GrayUserFilter extends ZuulFilter {
             throw new IllegalArgumentException("参数非法，未配置灰度发布服务基础配置参数"+GrayContants.STABLE_CONFIG+"！");
         }
         request.setAttribute(GrayContants.STABLE_CONFIG,gson.toJson(stableMap).toString());
+        rc.addZuulRequestHeader(GrayContants.STABLE_CONFIG,gson.toJson(stableMap).toString());
         return null;
     }
 

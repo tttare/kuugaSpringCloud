@@ -16,10 +16,11 @@
         <module>kuuga-zuul</module>
         <module>kuuga-redis</module>
         <module>kuuga-rabbitMQ</module>
-        <module>kuuga-config</module>
         <module>kuuga-user-center</module>
         <module>kuuga-pay-service</module>
         <module>grayLoadBalance</module>
+        <module>kuuag-server-config</module>
+        <module>kuuga-point-service</module>
     </modules>
 
     <!--打包方式 pom-->
