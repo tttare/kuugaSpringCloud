@@ -7,6 +7,15 @@ tttare:
 spring:
   application:
     name: kuuga-server-config
+#  cloud:
+#    config:
+#      server:
+#        git:
+#          uri: https://github.com/tttare/config-center
+#          username: tttare
+#          password: Qyk2438382779
+#          basedir: D:/cloud-config
+#          force-pull: true
   profiles:
     active: native
   cloud:
@@ -14,6 +23,12 @@ spring:
       server:
         native:
           search-locations: classpath:config
+  #------------------Rabbit MQ------------------------
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
 #--------------------eureka---------------------
 eureka:
@@ -23,3 +38,13 @@ eureka:
   instance:
     instance-id: ${spring.application.name}:${server.port} #修改Eureka上的默认描述信息
 
+#--------------------spring cloud bus------------
+#暴露/bus-refresh接口
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS

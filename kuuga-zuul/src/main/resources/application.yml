@@ -7,6 +7,11 @@ tttare:
 spring:
   application:
     name: kuuga-zuul
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
 #--------------------eureka---------------------
 eureka:

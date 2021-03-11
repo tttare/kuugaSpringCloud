@@ -19,6 +19,11 @@ spring:
     url: jdbc:postgresql://172.16.6.134:5433/test?searchpath=project101
     username: postgres
     password: LPwarrior123456
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 #--------------------mybatis plus --------------
 mybatis-plus:
   configuration:
